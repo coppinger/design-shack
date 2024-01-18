@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import { Header } from "@/components/site/Header";
 
+import backgroundImage from "../../public/xp.jpg";
+import { url } from "inspector";
+
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
@@ -42,8 +45,16 @@ export default function RootLayout({
           type="image/png"
         />
       </head>
-      <body className={archivo.variable + " " + inter.className}>
-        <Header />
+      <body
+        className={archivo.variable + " " + inter.className}
+        style={{
+          backgroundImage: `url(${backgroundImage.src})`,
+          backgroundSize: "cover",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {children}
       </body>
     </html>
